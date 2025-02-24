@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Nav = () => {
     return (
-        <div className={'w-full pt-12 flex justify-center items-end font-[BoldItalicArt] text-textColor'}>
+        <header className={'w-full pt-12 flex justify-center items-end font-[BoldItalicArt] text-textColor'}>
             <nav className={'w-10/12 h-[70px] rounded-full bg-darkGray '} style={{boxShadow: '0 0 10px 0 #ffffff40;'}}>
                 <div className={`w-full h-full flex justify-between items-center`}>
                    <div className={'flex h-full'}>
@@ -27,7 +27,7 @@ const Nav = () => {
                     </div>
                 </div>
             </nav>
-        </div>
+        </header>
     );
 }
 
