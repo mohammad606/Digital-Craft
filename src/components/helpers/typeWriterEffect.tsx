@@ -54,8 +54,8 @@ const TypewriterEffect = ({words,textStyle}:{words:string[],textStyle:string}) =
     }, [currentText, isDeleting, currentWordIndex, words]);
 
     return (
-        <div className="flex items-center justify-center  bg-gray-900">
-            <p className={` font-bold ${textStyle}`}>
+        <>
+            <span className={` font-bold ${textStyle}`}>
                 {currentText}
                 <span
                     className={`ml-1 text-darkBlue  animate-blink ${
@@ -64,8 +64,8 @@ const TypewriterEffect = ({words,textStyle}:{words:string[],textStyle:string}) =
                 >
           |
         </span>
-            </p>
-        </div>
+            </span>
+        </>
     );
 };
 
