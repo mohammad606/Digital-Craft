@@ -24,7 +24,7 @@ const HomeSection = () => {
            </div>
          </div>
           <div className={'sm:flex hidden w-1/2 h-auto  justify-end'}>
-              <div className={'relative w-[80%] h-full max-w-[550px]'}>
+              <div className={'relative w-[80%] h-full max-w-[500px]'}>
                   <Image src={'/image.png'} alt={'...'} fill={true}></Image>
               </div>
           </div>
