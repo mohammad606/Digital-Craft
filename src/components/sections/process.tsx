@@ -62,17 +62,17 @@ const ProcessSection = () => {
     return (
         <div ref={ref} className={'w-full '}
              style={{background: "linear-gradient(to bottom, #333331 0%, #2C3D8F 33%, #371668 66%, #140A3A 100%);"}}>
-            <div className={'flex flex-col p-32 gap-6'}>
+            <div className={'flex flex-col p-12 sm:p-20 lg:p-32 gap-6'}>
                 <h3 className={'text-[20px] lg:text-[30px] xl:text-[40px] text-textColor text-center'}>Website Design
                     Process</h3>
-                <p className={'text-textColor text-center'}>Take a peek behind the curtain and explore the custom web
+                <p className={'text-textColor text-center text-[12px] lg:text-[14px] xl:text-[16px]'}>Take a peek behind the curtain and explore the custom web
                     design process our team follows. We build custom sites for brands of all sizes that deliver
                     measurable results.</p>
                 <div className={'flex pt-10 justify-between w-full '}>
-                    <div className={'w-[5%] flex  pt-6'}>
+                    <div className={'w-[5%] md:flex hidden  pt-6'}>
                         <ProgressBar ref={ref} hight={'h-[90%]'}/>
                     </div>
-                    <div className={'w-[90%] gap-10 flex flex-col'}>
+                    <div className={'md:w-[90%] w-full gap-10 flex flex-col'}>
                         {data.map((item, index) => (
                             <div key={index}>
                                 <ProcessSteps
