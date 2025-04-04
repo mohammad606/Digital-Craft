@@ -2,31 +2,48 @@
 import {useEffect, useState} from "react";
 
 
-const ProgressBar = (props: { ref: any }) => {
+const ProgressBar = (props: { ref: any,hight?:string }) => {
 
     let [progress, setProgress] = useState<number>(0)
 
+    const [distanceFromTop, setDistanceFromTop] = useState(0);
+
     useEffect(() => {
-        let refScroll = props.ref.current
-        const handleScroll = () => {
-            const scrollHeight = refScroll.scrollHeight;
-            const clientHeight = refScroll.clientHeight;
-            const scrollTop = refScroll.scrollTop;
-            const scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
-            setProgress(scrollPercent)
-       }
-       refScroll.addEventListener('scroll', handleScroll);
-
-        return () => {
-            refScroll.removeEventListener('scroll', handleScroll);
+        if (props.ref.current) {
+            const rect = props.ref.current.getBoundingClientRect();
+            setDistanceFromTop(rect.top + window.scrollY);
         }
+    }, []);
 
-    }, [props.ref.current])
+    useEffect(() => {
+        const onScroll = () => {
+            if (props.ref.current) {
+                const rect = props.ref.current.getBoundingClientRect();
+                const totalHeight = rect.height + rect.top;
+                const windowScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scroll = windowScrollTop - distanceFromTop;
+                const progress = (scroll / totalHeight) * 100;
+                let progressValue = progress < 0 ? 0 : progress > 100 ? 100 : progress;
+                setProgress(progressValue);
+            }
+        };
+
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [distanceFromTop]);
 
     return (
 
-        <div className={'w-8 h-full bg-gray'}>
-            <div className={'w-full bg-[#0F33F8]'} style={{height:`${progress}%`}}></div>
+        <div className={`w-5 ${props.hight?props.hight:'h-full'} h-full relative `}>
+            <div className={'w-2 bg-[#0F33F8] absolute top-0 left-1/2 -translate-x-1/2'} style={{height:`${progress}%`}}></div>
+            <div className={'w-6 h-full flex flex-col justify-between'}>
+                <div className={'w-5 h-5 rounded-full bg-[#0F33F8]'} style={{boxShadow: '0 0 25.5px 9.5px #4761f6'}}></div>
+                <div className={'w-5 h-5 rounded-full border-2 border-[#0F33F8]'} style={progress >= 20 ? { boxShadow: '0 0 25.5px 9.5px #4761f6',backgroundColor:'#0F33F8' } : {}}></div>
+                <div className={'w-5 h-5 rounded-full border-2 border-[#0F33F8] '} style={progress >= 40 ? { boxShadow: '0 0 25.5px 9.5px #4761f6',backgroundColor:'#0F33F8' } : {}}></div>
+                <div className={'w-5 h-5 rounded-full border-2 border-[#0F33F8] '} style={progress >= 60 ? { boxShadow: '0 0 25.5px 9.5px #4761f6',backgroundColor:'#0F33F8' } : {}} ></div>
+                <div className={'w-5 h-5 rounded-full border-2 border-[#0F33F8] '} style={progress >= 80 ? { boxShadow: '0 0 25.5px 9.5px #4761f6',backgroundColor:'#0F33F8' } : {}} ></div>
+                <div className={'w-5 h-5 rounded-full border-2 border-[#0F33F8] '} style={progress >= 98 ? { boxShadow: '0 0 25.5px 9.5px #4761f6',backgroundColor:'#0F33F8' } : {}} ></div>
+            </div>
         </div>
     )
 

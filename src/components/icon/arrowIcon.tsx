@@ -1,15 +1,17 @@
+import {className} from "postcss-selector-parser";
 
 
-const ArrowIcon = ({props}:{props:string}) => {
+const ArrowIcon = ({classN}:{classN:string}) => {
     return(
-        <svg xmlnsXlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" className={`icon ${props}`}
-             aria-hidden="true" role="img" >
+        <svg className={`${classN}`} viewBox="0 0 35 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clipPath="url(#clip0_25_166)">
+                <path d="M33.75 14.1815L1.25 27.3958L11.205 14.1815L1.25 0.967285L33.75 14.1815Z" fill="#1E7DAF"/>
+            </g>
             <defs>
-                <symbol fill="none" viewBox="0 0 14 22" id="lib-icon-arrow3" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.5 11L.5 21.5 4.482 11 .5.5l13 10.5z" fill="#1B2C5C"></path>
-                </symbol>
+                <clipPath id="clip0_25_166">
+                    <rect width="35" height="27.687" fill="white" transform="translate(0 0.337891)"/>
+                </clipPath>
             </defs>
-            <use xlinkHref="#lib-icon-arrow3"></use>
         </svg>
     )
 }

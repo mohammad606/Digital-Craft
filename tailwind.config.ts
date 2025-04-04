@@ -14,7 +14,8 @@ export default {
         gray: "#333331",
         textColor: "#FDF1E5",
         lightBlue:'#1E7EB0',
-        darkBlue:'#1E7EB0'
+        darkBlue:'#1E7EB0',
+        greenText:'#04A581'
       },
     },
   },
