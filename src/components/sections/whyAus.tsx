@@ -43,14 +43,14 @@ const WhyAus = () => {
         <div className="bg-[#333331] py-20">
             <div className="flex flex-col gap-6 items-center px-12 sm:px-20 lg:px-32">
                 <div
-                    className="text-textColor text-[BoldItalicArt] text-[20px] md:text-[30px] xl:text-[40px] flex justify-center gap-2">
+                    className="text-textColor text-[BoldItalicArt] text-[15px] sm:text-[20px] md:text-[30px] xl:text-[40px] flex justify-center gap-2">
                     <h2>Why Choose</h2>
                     <h2 className="bg-gradient-to-r from-[#009CFF] to-[#9536E5] text-transparent bg-clip-text">Digital
                         Craft</h2>
                     <h2>Company ?</h2>
                 </div>
 
-                <div className="flex flex-col w-full gap-6">
+                <div className=" flex-col w-full gap-6 md:flex hidden">
                     {groupedData.map((pair, index) => (
                         <div key={`pair-${index}`}>
                             <div className="flex justify-between w-full gap-4">
@@ -69,6 +69,22 @@ const WhyAus = () => {
                                 <hr className="w-full h-1 bg-gradient-to-r from-[#009CFF] to-[#9536E5] my-6"/>
                             )}
                         </div>
+                    ))}
+                </div>
+                <div className={'md:hidden flex flex-col w-full gap-2'}>
+                    {data.map((item,index) => (
+                        <>
+                            <CardAus
+                                cardWidth={'w-full'}
+                                key={index}
+                                number={item.number}
+                                title={item.title}
+                                text={item.text}
+                            />
+                            {index < data.length - 1 && (
+                                <hr className="w-full h-1 bg-gradient-to-r from-[#009CFF] to-[#9536E5] my-6"/>
+                            )}
+                        </>
                     ))}
                 </div>
             </div>
