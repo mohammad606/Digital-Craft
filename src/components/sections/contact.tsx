@@ -10,7 +10,7 @@ const ContactSection = () => {
         message: ''
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
@@ -18,20 +18,20 @@ const ContactSection = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e:any) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
     };
     return (
         <div className={'py-32 px-12 sm:px-20 lg:px-32 w-full'} style={{background: "linear-gradient(to bottom, #333331 0%, #121738 5%, #2D398B 100%);"}}>
-            <div className={'flex justify-between'}>
-                <div className={'w-1/2 flex items-center'}>
-                   <div>
+            <div className={'flex justify-between flex-col gap-4 md:gap-0 md:flex-row'}>
+                <div className={'md:w-1/2 w-full flex items-center'}>
+                   <div className={'flex flex-col'}>
                        <span className={'text-white'}>Take The Silk Road To</span>
                        <h3 className={'inline-block leading-[1] text-[30px] md:text-[40px] xl:text-[50px] text-[#04E4FF] [text-shadow:_0_0_18px_#04E4FF]'} >Digitizing Your Business Growth</h3>
                    </div>
                 </div>
-                <div className={'w-1/2 flex flex-col text-white'}>
+                <div className={'md:w-1/2 w-full flex flex-col text-white'}>
                     <h4 className={'text-[15px] md:text-[20px] xl:text-[30px]'}>Start A Conversation With Us</h4>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
