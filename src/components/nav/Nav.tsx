@@ -11,21 +11,38 @@ const Nav = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
+        const body = document.body;
+
         if (isOpen) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
+            const scrollY = window.scrollY;
+            body.style.position = 'fixed';
+            body.style.top = `-${scrollY}px`;
+            body.style.width = '100%';
+            body.style.overflowY = 'hidden';
         } else {
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.width = '';
+            const scrollY = Math.abs(parseInt(body.style.top || '0'));
+            body.style.position = '';
+            body.style.top = '';
+            body.style.width = '';
+            body.style.overflowY = '';
+            window.scrollTo(0, scrollY);
         }
+
         return () => {
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.width = '';
+            body.style.position = '';
+            body.style.top = '';
+            body.style.width = '';
+            body.style.overflowY = '';
         };
     }, [isOpen]);
+
+    useEffect(() => {
+        document.documentElement.style.overflowX = 'hidden';
+        return () => {
+            document.documentElement.style.overflowX = '';
+        };
+    }, []);
+
 
     return (
         <>
